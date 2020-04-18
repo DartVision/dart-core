@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ab4c0b7b-5dd0-438a-9fff-38b283608f22" name="pi@pi0:22" url="http:///">
+        <fileTransfer accessType="SFTP" host="pi0" port="22" sshConfigId="0642fe49-b45a-4ebe-81a1-11411e80de17" sshConfig="pi@pi0:22 agent" authAgent="true" />
+      </webServer>
+      <webServer id="f2b81c1b-62a3-4345-9cdf-ac5f1b5f6ac3" name="pi@pi0:4000" url="http:///">
+        <fileTransfer accessType="SFTP" host="pi0" port="4000" sshConfigId="7af0828a-4128-4a98-9e6a-4c00727c38d6" sshConfig="pi@pi0:4000 agent" authAgent="true" />
+      </webServer>
+    </option>
+    <groups>
+      <group>
+        <name>dev</name>
+        <servers>
+          <name value="pi@pi0:22" />
+          <name value="pi@pi0:4000" />
+        </servers>
+      </group>
+    </groups>
+  </component>
+</project>
