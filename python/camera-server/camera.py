@@ -1,14 +1,15 @@
 from time import sleep
 from io import BytesIO
 from threading import Thread, Lock
-from picamera import PiCamera
+import picamera
 import copy
 import logging
 
 
 class Camera(object):
     def __init__(self):
-        self._camera = PiCamera()
+        picamera.PiCamera.CAPTURE_TIMEOUT = 20  # seconds
+        self._camera = picamera.PiCamera()
         self._camera.resolution = (3280, 2464)
         self._camera.start_preview()
         self._image = None
