@@ -9,6 +9,9 @@ app = Bottle()
 def toggle():
     print('toggling...')
     led_strip.toggle_light()
+    response.set_header('Access-Control-Allow-Origin',  '*')
+    response.set_header('Access-Control-Allow-Methods',  'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+    response.set_header('Access-Control-Allow-Headers',  'Origin, Content-Type, X-Auth-Token')
     return
 
 
