@@ -33,3 +33,13 @@ class Camera(object):
             self._lock.acquire()
             self._image = buffer.read()
             self._lock.release()
+
+
+if __name__ == '__main__':
+    _camera = picamera.PiCamera()
+    buffer = BytesIO()
+    _camera.capture(buffer, format='jpeg', quality=100)
+    buffer.seek(0)
+    _image = buffer.read()
+    print(_image)
+
