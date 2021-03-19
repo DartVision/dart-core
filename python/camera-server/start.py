@@ -1,10 +1,13 @@
 import flask
+from flask_cors import CORS, cross_origin
 import argparse
 from datetime import datetime
 from os import path
 from camera import Camera
 
 app = flask.Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/image.jpg')
 def get_image():
@@ -15,6 +18,7 @@ def get_image():
     return image, headers
 
 @app.route('/capture', methods=['POST'])
+@cross_origin()
 def capture_image():
     """
     Expect the token as application/json
