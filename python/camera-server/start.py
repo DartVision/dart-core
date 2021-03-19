@@ -38,10 +38,12 @@ def capture_image():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
+    parser.add_argument('port', help=' port on which the server should be started.')
     parser.add_argument('image_path', help=' where the captured images should be stored.')
     args = parser.parse_args()
     image_path = args.image_path
+    port = args.port
 
     camera = Camera()
     # Start the server on the external interface
-    app.run(host='0.0.0.0', port=8082, threaded=True)
+    app.run(host='0.0.0.0', port=port, threaded=True)

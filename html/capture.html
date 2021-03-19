@@ -34,7 +34,7 @@
     }
     async function captureImagePair() {
         const cam1URL = 'http://pi0:8082/capture'
-        const cam2URL = 'http://pi0:8083/capture'
+        const cam2URL = 'http://pi0:8081/capture'
         const rand = Math.floor((Math.random() * 10000000) + 1)
         captureImage(cam1URL, 'cam1', rand)
         captureImage(cam2URL, 'cam2', rand)
