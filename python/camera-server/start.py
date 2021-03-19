@@ -20,9 +20,9 @@ def capture_image():
     Expect the token as application/json
     :return:
     """
-    if flask.request.content_type != 'application/json':
+    if flask.request.content_type != 'text/plain':
         return 'bad request!', 400
-    token = str(flask.request.json)
+    token = flask.request.data.decode("utf-8")
     image = camera.capture()
 
     today = datetime.today().strftime('%Y_%m_%d_%H_%M_%S')

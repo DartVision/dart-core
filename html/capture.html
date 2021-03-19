@@ -23,7 +23,7 @@
     async function captureImage(camURL, camId, token) {
         document.getElementById(camId).innerHTML = "Capturing..."
         fetch(camURL, {
-            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(token)
+            method: 'POST', headers: {'Content-Type': 'text/plain'}, body: JSON.stringify(token)
         }).then(resp => {
             if (resp.ok) {
                 document.getElementById(camId).innerHTML = "Image captured"
