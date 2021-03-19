@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dataset</title>
     <style>
         .button {
             /*flex: 1;*/
@@ -21,11 +20,35 @@
     </style>
 <body>
 <script>
-    function captureImagePair() {
-        fetch('', { method: 'post' }).then()
+    async function captureImage(camURL, camId, token) {
+        document.getElementById(camId).innerHTML = "Capturing..."
+        fetch(camURL, {
+            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(token)
+        }).then(resp => {
+            if (resp.ok) {
+                document.getElementById(camId).innerHTML = "Image captured"
+            }
+        }).catch(_ => {
+            document.getElementById(camId).innerHTML = "An error occurred!"
+        })
+    }
+    async function captureImagePair() {
+        const cam1URL = 'http://pi0:8082/capture'
+        const cam2URL = 'http://pi0:8083/capture'
+        const rand = Math.floor((Math.random() * 10000000) + 1)
+        captureImage(cam1URL, 'cam1', rand)
+        captureImage(cam2URL, 'cam2', rand)
     }
 </script>
 <button id="CaptureButton" type="button" onclick="captureImagePair()">Capture Image Pair</button>
+<div style="">
+    cam pi0:
+    <span id="cam1"></span>
+</div>
+<div>
+    cam pi1:
+    <span id="cam2"></span>
+</div>
 
 </body>
 </html>
