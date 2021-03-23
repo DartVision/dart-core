@@ -28,11 +28,15 @@ class Camera(object):
     def _start_capture(self):
         while True:
             buffer = BytesIO()
-            self._camera.capture(buffer, format='jpeg', quality=100)
-            buffer.seek(0)
-            self._lock.acquire()
-            self._image = buffer.read()
-            self._lock.release()
+            try:
+                self._camera.capture(buffer, format='jpeg', quality=100)
+            except picamera.PiCameraRuntimeError as e:
+                print(e)
+            else:
+                buffer.seek(0)
+                self._lock.acquire()
+                self._image = buffer.read()
+                self._lock.release()
 
 
 if __name__ == '__main__':

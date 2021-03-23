@@ -38,8 +38,8 @@ def capture_image():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('port', help=' port on which the server should be started.')
-    parser.add_argument('image_path', help=' where the captured images should be stored.')
+    parser.add_argument('port', type=int, help=' port on which the server should be started.')
+    parser.add_argument('image_path', type=str, help=' where the captured images should be stored.')
     args = parser.parse_args()
     image_path = args.image_path
     port = args.port
